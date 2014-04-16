@@ -1,1 +1,25 @@
 security:
+  firewalls:
+    secured_area:
+      pattern: ^/
+      anonymous: ~
+      form_login: ~
+      logout: ~
+
+  access_control:
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/_profiler, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/_wdt, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/css, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/js, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/, roles: ROLE_USER }
+
+  providers:
+    in_memory:
+      memory:
+        users:
+          tester: { password: udiff, roles: "ROLE_USER" }
+
+  encoders:
+    Symfony\Component\Security\Core\User\User:
+      algorithm: plaintext

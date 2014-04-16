@@ -1,0 +1,7 @@
+parameters:
+#    sgs_site.example.class: SGS\SiteBundle\Example
+
+services:
+#    sgs_site.example:
+#        class: %sgs_site.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

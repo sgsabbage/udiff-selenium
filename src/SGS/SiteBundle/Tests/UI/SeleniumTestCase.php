@@ -30,7 +30,6 @@ abstract class SeleniumTestCase extends \PHPUnit_Framework_TestCase {
     }
 
     protected function loginWith($username, $password) {
-     d
         $this->fillField('username', $username);
         $this->fillField('password', $password);
 

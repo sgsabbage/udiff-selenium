@@ -16,13 +16,11 @@ class LoginTest extends SeleniumTestCase{
 
     public function testLogin() {
         $this->loginWith( 'tester', 'udiff' );
-        $this->sleep();
         $this->pageHeaderIs( "Welcome" );
     }
 
     public function testBadLogin() {
         $this->loginWith( 'foo', 'bar' );
-        $this->sleep();
         try {
             $this->session->element( LocatorStrategy::XPATH, "//div[text()='Bad credentials']");
         }

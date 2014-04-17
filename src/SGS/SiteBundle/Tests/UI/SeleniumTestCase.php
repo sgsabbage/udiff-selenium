@@ -18,12 +18,9 @@ abstract class SeleniumTestCase extends \PHPUnit_Framework_TestCase {
      */
     protected $webdriver;
 
-    protected $sleep = 0;
-
     public function setUp() {
         $this->webdriver = new WebDriver();
         $this->session = $this->webdriver->session( Browser::CHROME );
-        $this->sleep();
         $this->session->window('current')->postSize( [ 'width' => 1440, 'height' => 900 ] );
         $this->session->open( "http://localhost/~sean/udiff-selenium/web/app_testing.php");
     }
@@ -33,11 +30,9 @@ abstract class SeleniumTestCase extends \PHPUnit_Framework_TestCase {
     }
 
     protected function loginWith($username, $password) {
+     d
         $this->fillField('username', $username);
-        $this->sleep();
-
         $this->fillField('password', $password);
-        $this->sleep();
 
         $this->session->element( LocatorStrategy::ID, 'submit' )->click();
     }
@@ -45,10 +40,6 @@ abstract class SeleniumTestCase extends \PHPUnit_Framework_TestCase {
     protected function pageHeaderIs( $text ) {
         $header = $this->session->element( LocatorStrategy::CSS_SELECTOR, '.page-header h1' )->text();
         $this->assertEquals( $text, $header );
-    }
-
-    protected function sleep() {
-        sleep( $this->sleep );
     }
 
     protected function fillField( $field, $value ) {

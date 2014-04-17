@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+{% block title %}Reading book {{ book.title }}{% endblock %}
+{% block headline %}Reading book '{{ book.title }}'{% endblock %}
+{% block content_content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <td id="book_title">{{ book.title }}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Author</th>
+                <td id="book_author">{{ book.author }}</td>
+            </tr>
+            <tr>
+                <th>Synposis</th>
+                <td id="book_synopsis">{{ book.synopsis }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

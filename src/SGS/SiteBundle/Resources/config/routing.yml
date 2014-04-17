@@ -1,3 +1,11 @@
-sgs_site_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SGSSiteBundle:Default:index }
+index:
+    path: /
+    defaults: { _controller: SGSSiteBundle:Main:index }
+
+sgs_books:
+    path: /books
+    defaults: { _controller: SGSSiteBundle:Main:books }
+
+sgs_book_read:
+    path: /book/{id}
+    defaults: { _controller: SGSSiteBundle:Main:bookRead }

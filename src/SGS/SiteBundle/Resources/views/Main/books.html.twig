@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+{% block title %}Book Listing{% endblock %}
+{% block headline %}Listing books{% endblock %}
+{% block content_content %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr class="book">
+                <td class="title"><a href="{{ path( 'sgs_book_read', { 'id' : loop.index }) }}">{{ book.title }}</a></td>
+                <td class="author">{{ book.author }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

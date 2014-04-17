@@ -32,9 +32,4 @@ class LoginController extends Controller
         );
     }
 
-    public function logoutAction()
-    {
-        return $this->render('SGSSiteBundle:Default:index.html.twig');
-    }
-
 }

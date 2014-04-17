@@ -32,26 +32,14 @@ abstract class SeleniumTestCase extends \PHPUnit_Framework_TestCase {
         $this->session->close();
     }
 
-    protected function sendValue( Element $element, $value ) {
-        $element->postValue( [ "value" => str_split( $value, 1 ) ] );
-    }
-
     protected function loginWith($username, $password) {
-        $usernameField = $this->session->element( LocatorStrategy::ID, 'username' );
-        $this->sendValue( $usernameField, $username );
-
+        $this->fillField('username', $username);
         $this->sleep();
 
-        $passwordField = $this->session->element( LocatorStrategy::ID, 'password' );
-        $this->sendValue( $passwordField, $password );
-
+        $this->fillField('password', $password);
         $this->sleep();
 
         $this->session->element( LocatorStrategy::ID, 'submit' )->click();
-    }
-
-    protected function sleep() {
-        sleep( $this->sleep );
     }
 
     protected function pageHeaderIs( $text ) {
@@ -59,7 +47,20 @@ abstract class SeleniumTestCase extends \PHPUnit_Framework_TestCase {
         $this->assertEquals( $text, $header );
     }
 
+    protected function sleep() {
+        sleep( $this->sleep );
+    }
+
+    protected function fillField( $field, $value ) {
+        $element = $this->session->element(LocatorStrategy::ID, $field);
+        $this->sendValue($element, $value);
+    }
+
     protected function clickLink($text) {
         $this->session->element(LocatorStrategy::LINK_TEXT, $text)->click();
+    }
+
+    protected function sendValue( Element $element, $value ) {
+        $element->postValue( [ "value" => str_split( $value, 1 ) ] );
     }
 } 
